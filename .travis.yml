@@ -2,7 +2,7 @@ language: cpp
 compiler:
   - clang
   - gcc
-sqript:
+script:
   - mkdir build
   - cd build
   - cmake .. && make 
