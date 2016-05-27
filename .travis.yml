@@ -5,7 +5,7 @@ compiler:
 sqript:
   - mkdir build
   - cd build
-  - cmake .. && make
+  
   
 matrix:
   include:
