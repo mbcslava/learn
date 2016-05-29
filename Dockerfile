@@ -1,0 +1,18 @@
+#Version: 1.0.0
+#Из какого образа строим
+FROM ubuntu:14.04
+#Координаты автора образа
+MAINTAINER User <mbcslava@outlook.com>
+#Чтобы apt-get не спрашивал обо всяких возможных настройках и ставил все молча и по дефолту
+ENV DEBIAN_FRONTEND noninteractive
+#Исполням команды (обновляем репозиторий APT - устанавливаем пакет)
+RUN apt-get update
+RUN apt-get install -y nginx
+#Добавим файл nginx.conf в файловую систему временного контейнера
+ADD nginx.conf /etc/nginx/
+#сообщаем какой порт будем слушать
+EXPOSE 80
+#Сообщаем, что /www является томом и может содержать общие файлы, общие с хостом или другим контейнерами
+VOLUME /www
+#Сообщаем, что при запуске образа по умолчанию запускаем Nginx
+CMD /usr/share/nginx
